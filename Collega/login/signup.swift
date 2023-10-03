@@ -193,6 +193,7 @@ struct signup: View {
                     .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 15.0)
+                    .padding(.trailing, 50.0)
             }
             
             // password verification textfield
