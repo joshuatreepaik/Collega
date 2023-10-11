@@ -61,20 +61,31 @@ struct NextButton: ButtonStyle {
 }
 
 struct CheckboxToggleStyle: ToggleStyle {
+    var checked : Bool
+    
     func makeBody(configuration: Configuration) -> some View {
-        return HStack {
-                    Image("ic_checkbox")
-                        .resizable()
-                        .frame(width: 25.0, height:25.0)
-                        .onTapGesture { configuration.isOn.toggle() }
+        HStack {
+//            RoundedRectangle(cornerRadius: 5.0)
+//               .stroke(lineWidth: 2)
+//               .frame(width: 25, height: 25)
+//               .cornerRadius(5.0)
+//               .overlay {
+                   Image(checked ? "checked_checkbox" : "unchecked_checkbox")
+//               }
+               .onTapGesture {
+                   withAnimation(.spring()) {
+                       configuration.isOn.toggle()
+                   }
+               }
+            
             configuration.label
-                }.frame(width: 25.0, height: 25.0)
-
+       }
     }
 }
 
 struct signup: View {
-    
+    let title: String
+    @Binding var path: NavigationPath
 //    @State var first_name: String = ""
 //    @State var last_name: String = ""
     @State var email: String = ""
@@ -89,30 +100,16 @@ struct signup: View {
     @State var terms2 = false
     @State var terms3 = false
     
+    var backButtonPlacement: ToolbarItemPlacement {
+            #if os(iOS)
+            ToolbarItemPlacement.navigationBarLeading
+            #else
+            ToolbarItemPlacement.navigation
+            #endif
+        }
+    
     var body: some View {
         VStack() {
-            
-//            // first name textfield
-//            Group {
-//                TextField("First name", text: $first_name).padding(.leading, 30.0).border(Color.white).font(Font.custom("Anek Telugu", size: 16))
-//
-//                Rectangle()
-//                    .foregroundColor(.clear)
-//                    .frame(width: 345, height: 1)
-//                    .background(Color(red: 0.94, green: 0.94, blue: 0.94))
-//                    .padding(.bottom, 15.0)
-//            }
-//
-//            // last name textfield
-//            Group {
-//                TextField("Last name", text: $last_name).padding(.leading, 30.0).border(Color.white).font(Font.custom("Anek Telugu", size: 16))
-//
-//                Rectangle()
-//                    .foregroundColor(.clear)
-//                    .frame(width: 345, height: 1)
-//                    .background(Color(red: 0.94, green: 0.94, blue: 0.94))
-//                    .padding(.bottom, 15.0)
-//            }
             
             // stack for email information
             HStack() {
@@ -215,7 +212,7 @@ struct signup: View {
                         .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
                         .frame(width: 250, height: 26, alignment: .leading)
                 }
-//                .toggleStyle(CheckboxToggleStyle())
+                .toggleStyle(CheckboxToggleStyle(checked: self.terms1))
                 
                 Toggle(isOn: $terms2) {
                     Text("Terms and Conditions Agreement")
@@ -223,7 +220,7 @@ struct signup: View {
                         .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
                         .frame(width: 250, height: 26, alignment: .leading)
                 }
-//                .toggleStyle(CheckboxToggleStyle())
+                .toggleStyle(CheckboxToggleStyle(checked: self.terms2))
                 
                 Toggle(isOn: $terms3) {
                     Text("Terms and Conditions Agreement")
@@ -231,7 +228,7 @@ struct signup: View {
                         .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
                         .frame(width: 250, height: 26, alignment: .leading)
                 }
-//                .toggleStyle(CheckboxToggleStyle())
+                .toggleStyle(CheckboxToggleStyle(checked: self.terms3))
             }
             
             // next button
@@ -248,13 +245,37 @@ struct signup: View {
                     .frame(width: 40, height: 26, alignment: .center)
             }.padding(.top, 30.0) .buttonStyle(NextButton())
             
-        }   .frame(width: 393, height: 852)
-            .background(.white)
+        }
+//        .frame(width: 393, height: 852)
+//        .background(.white)
+        
+        // navigation title and back button
+        .navigationTitle(Text(title)
+//            .font(
+//                Font.custom("Raleway", size: 100)
+//                .weight(.bold)
+//            )
+//                .multilineTextAlignment(.center)
+//                .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+//                .frame(width: 72, height: 20, alignment: .top)
+        )
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: backButtonPlacement) {
+                Button {
+                    path.removeLast()
+                } label: {
+                    Image("close")
+                }
+            }
+        }
+        .padding(.bottom, 200.0)
     }
 }
 
-struct signup_Previews: PreviewProvider {
-    static var previews: some View {
-        signup()
-    }
-}
+//struct signup_Previews: PreviewProvider {
+//    @State private var path = NavigationPath()
+//    static var previews: some View {
+//        signup(path: $path)
+//    }
+//}

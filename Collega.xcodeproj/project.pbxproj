@@ -13,6 +13,7 @@
 		8C83712E2AAD3F520033EB9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C83712D2AAD3F520033EB9F /* Assets.xcassets */; };
 		8C8371322AAD3F520033EB9F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8371312AAD3F520033EB9F /* Preview Assets.xcassets */; };
 		8CA4F7672ABA1A7000AEC00B /* signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4F7662ABA1A7000AEC00B /* signup.swift */; };
+		8CA4F7692AD6280700AEC00B /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4F7682AD6280700AEC00B /* CreateUsernameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8C83712F2AAD3F520033EB9F /* Collega.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Collega.entitlements; sourceTree = "<group>"; };
 		8C8371312AAD3F520033EB9F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8CA4F7662ABA1A7000AEC00B /* signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signup.swift; sourceTree = "<group>"; };
+		8CA4F7682AD6280700AEC00B /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				8C83712B2AAD3F510033EB9F /* LoginView.swift */,
 				8C2B753B2AB06E4300C1A17E /* login.swift */,
+				8CA4F7682AD6280700AEC00B /* CreateUsernameView.swift */,
 				8CA4F7662ABA1A7000AEC00B /* signup.swift */,
 			);
 			path = login;
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2B753D2AB072DF00C1A17E /* LoginView.swift in Sources */,
+				8CA4F7692AD6280700AEC00B /* CreateUsernameView.swift in Sources */,
 				8CA4F7672ABA1A7000AEC00B /* signup.swift in Sources */,
 				8C2B753C2AB06E4300C1A17E /* login.swift in Sources */,
 				8C83712A2AAD3F510033EB9F /* CollegaApp.swift in Sources */,

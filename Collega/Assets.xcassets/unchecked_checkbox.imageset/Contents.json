@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "ic_checkbox.svg",
+      "filename" : "unchecked_checkbox.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

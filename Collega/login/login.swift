@@ -87,13 +87,9 @@ struct login: View {
                         .font(Font.custom("Anek Telugu", size: 14))
                         .foregroundColor(Color(red: 0.6, green: 0.6, blue: 0.6))
                         .padding(.leading, 200.0)
-                    
-                    
+                
                 }
-                
-                
-                
-                
+               
                 // login button
                 Button(action: {
                     print("email : " + email)
@@ -127,14 +123,14 @@ struct login: View {
                 
                 
                 .navigationDestination(for: String.self) { view in
-                    signup()
+                    signup(title: "Sign Up", path: $path)
                 }
                 
                 
                 
             }
-            .frame(width: 393, height: 852)
-            .background(.white)
+//            .frame(width: 393, height: 852)
+//            .background(.white)
             
   
         }
